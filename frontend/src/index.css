@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+
+@font-face {
+  font-family: 'Aeonik';
+  src: url('/fonts/Aeonik-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Aeonik';
+  src: url('/fonts/Aeonik-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+:root {
+  /* Podia Color Palette */
+  --podia-black: #000000;
+  --podia-dark: #202020;
+  --podia-indigo: #4b2aad;
+  --podia-gray: #535862;
+  --podia-border: #e0e0e0;
+  
+  /* Section Backgrounds */
+  --bg-hero: #f4f8fb;
+  --bg-lavender: #f3effc;
+  --bg-peach: #fff5e9;
+  --bg-mint: #eef9f5;
+  --bg-white: #ffffff;
+  
+  /* Spacing */
+  --spacing-section: 120px;
+  --spacing-card: 24px;
+
+  /* Typography Variables */
+  --font-primary: 'Aeonik', sans-serif;
+  --font-secondary: 'Geist', sans-serif;
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-secondary);
+  background-color: var(--bg-white);
+  color: var(--podia-dark);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--podia-black);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Podia Components */
+.podia-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-family: var(--font-secondary);
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.podia-btn-black {
+  background-color: var(--podia-black);
+  color: white;
+}
+
+.podia-btn-black:hover {
+  background-color: #333333;
+}
+
+.podia-btn-outline {
+  background-color: transparent;
+  border: 1px solid var(--podia-black);
+  color: var(--podia-black);
+}
+
+.podia-btn-outline:hover {
+  background-color: #f5f5f5;
+}
+
+.podia-link {
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--podia-black);
+}
+
+.podia-link:hover {
+  color: var(--podia-indigo);
+}
+
+.podia-card {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid var(--podia-border);
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.podia-card:hover {
+  border-color: var(--podia-black);
+}
+
+.section-padding {
+  padding: var(--spacing-section) 0;
+}
+
+.container-podia {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Background Shapes */
+.shape {
+  position: absolute;
+  z-index: -1;
+  opacity: 0.8;
+}
+
+.shape-circle { border-radius: 50%; }
+.shape-square { border-radius: 12px; }
+
+@keyframes float-slow {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(10px, -20px) rotate(5deg); }
+}
+
+.animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+/* Typography Helpers */
+.text-display {
+  font-size: 56px;
+  margin-bottom: 24px;
+}
+
+.text-lead {
+  font-size: 20px;
+  color: var(--podia-gray);
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 768px) {
+  .text-display { font-size: 36px; }
+  .text-lead { font-size: 18px; }
+}
