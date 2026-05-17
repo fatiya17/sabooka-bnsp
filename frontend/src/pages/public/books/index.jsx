@@ -39,8 +39,11 @@ export default function Books() {
   }, []);
 
   const filteredBooks = books.filter(book => {
+    // user: melakukan pencarian buku berdasarkan kecocokan judul yang diinput user
     const matchesSearch = book.title.toLowerCase().includes(search.toLowerCase());
+    // user: melakukan penyaringan buku berdasarkan genre yang dipilih
     const matchesGenre = selectedGenre === "" || book.genre_id?.toString() === selectedGenre;
+    // user: melakukan penyaringan buku berdasarkan penulis yang dipilih
     const matchesAuthor = selectedAuthor === "" || book.author_id?.toString() === selectedAuthor;
     return matchesSearch && matchesGenre && matchesAuthor;
   });

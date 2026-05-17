@@ -25,6 +25,7 @@ export default function ShowBook() {
   }, [id]);
 
   const handleAddToCartAction = async (redirect = false) => {
+    // user: memeriksa apakah user sudah login sebelum melakukan add to cart buku
     if (!accessToken) {
       alert("Please log in first.");
       navigate("/login");
@@ -32,13 +33,16 @@ export default function ShowBook() {
     }
 
     try {
+      // 1. mengirim request add to cart buku ke api backend
       await addToCart({
         book_id: book.id,
         quantity: 1
       });
       
+      // 2. memicu event global update cart agar navbar memperbarui jumlah item
       window.dispatchEvent(new Event("cartUpdated"));
       
+      // 3. mengarahkan user ke halaman cart jika tombol checkout ditekan, atau tampilkan alert
       if (redirect) {
         navigate("/cart");
       } else {

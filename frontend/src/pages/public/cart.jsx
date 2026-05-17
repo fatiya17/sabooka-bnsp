@@ -59,6 +59,7 @@ export default function Cart() {
   };
 
   const handleCheckout = async () => {
+    // user: melakukan pengecekan login user sebelum memulai transaksi pembayaran
     if (!accessToken) {
       alert("Silakan login terlebih dahulu.");
       navigate("/login");
@@ -67,12 +68,14 @@ export default function Cart() {
 
     setIsProcessing(true);
     try {
+      // 1. mengirim permintaan checkout pembayaran buku sebelum dikirim (via gateway xendit)
       const response = await API.post("/checkout", {}, {
         headers: {
           Authorization: `Bearer ${accessToken}`
         }
       });
       
+      // 2. mengarahkan user ke halaman invoice xendit jika pembayaran berhasil dibuat
       if (response.data.invoice_url) {
         window.location.href = response.data.invoice_url;
       }

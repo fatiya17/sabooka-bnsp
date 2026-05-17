@@ -8,18 +8,24 @@ export default function AdminGenres() {
 
   useEffect(() => {
     const fetchData = async () => {
+      // admin: seseorang yang mengelola genre
+      // 1. mengambil data kategori buku dari api
       const genresData = await getGenres();
+      // 2. menyimpan data kategori ke dalam state
       setGenres(genresData.data || []);
     };
     fetchData();
   }, []);
 
   const handleDelete = async (id) => {
+    // 3. meminta konfirmasi sebelum menghapus kategori buku
     const confirmDelete = window.confirm("Are you sure you want to delete this genre?");
 
     if (confirmDelete) {
       try {
+        // 4. mengirim permintaan hapus kategori buku ke api
         await deleteGenre(id);
+        // 5. memperbarui state untuk menghapus kategori dari tampilan
         setGenres(genres.filter(genre => genre.id !== id));
       } catch (error) {
         alert(error.message);

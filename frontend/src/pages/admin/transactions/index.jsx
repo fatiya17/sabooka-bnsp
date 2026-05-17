@@ -32,11 +32,14 @@ export default function AdminTransactions() {
 
   useEffect(() => {
     const fetchData = async () => {
+      // admin: list pesanan buku dari user yang berbeda-beda
+      // 1. mengambil list pesanan buku dari user yang berbeda-beda beserta data buku dan user
       const [transData, booksData, usersData] = await Promise.all([
         getTransactions(), 
         getBooks(),
         getUsers()
       ]);
+      // 2. menyimpan list pesanan buku ke dalam state
       setTransactions(transData.data);
       setBooks(booksData.data);
       setUsers(usersData.data);

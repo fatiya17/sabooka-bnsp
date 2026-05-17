@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookOpen, faTags, faTruckFast } from "@fortawesome/free-solid-svg-icons";
 
 export default function About() {
+  // user: menginisialisasi data tim untuk ditampilkan detailnya di halaman about us
   const teamMembers = [
     { name: "Alex Johnson", role: "Founder & CEO", color: "bg-[#A3D1E4]" },
     { name: "Sarah Williams", role: "Head of Operations", color: "bg-[#FB8B4B]" },

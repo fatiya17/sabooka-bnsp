@@ -8,7 +8,10 @@ export default function AdminUsers() {
 
   useEffect(() => {
     const fetchData = async () => {
+      // admin: list user yang sudah terdaftar
+      // 1. mengambil data list user yang sudah terdaftar dari api
       const usersData = await getUsers();
+      // 2. menyimpan data user ke dalam state untuk ditampilkan
       setUsers(usersData.data);
     };
 

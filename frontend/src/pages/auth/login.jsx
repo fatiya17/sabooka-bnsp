@@ -24,18 +24,23 @@ export default function Login() {
   }
 
   const handleSubmit = async (e) => {
+    // user: mencegah reload halaman saat form login disubmit
     e.preventDefault();
     setLoading(true);
     setError(null);
 
     try {
+      // 1. mengirim kredensial untuk login user ke api
       const response = await login(formData);
 
+      // 2. menyimpan token akses dan data user ke local storage
       localStorage.setItem("accessToken", response.token);
       localStorage.setItem("userInfo", JSON.stringify(response.user));
 
+      // 3. mengarahkan user ke halaman yang sesuai dengan rolenya
       navigate(response.user.role === "admin" ? "/admin" : "/");
     } catch (error) {
+      // 4. menampilkan error jika login user gagal
       setError(error?.response?.data?.message);
     } finally {
       setLoading(false);

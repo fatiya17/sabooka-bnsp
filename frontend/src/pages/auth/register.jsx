@@ -27,15 +27,20 @@ export default function Register() {
   }
 
   const handleSubmit = async (e) => {
+    // user: mencegah reload halaman saat form registrasi disubmit
     e.preventDefault();
     setError(null);
+    // 1. memvalidasi input form registrasi user
     const v = validate(formData);
     if (v) return setError(v);
     setLoading(true);
     try {
+      // 2. mengirim data untuk registrasi user baru ke api
       await register(formData);
+      // 3. mengarahkan user ke halaman login setelah registrasi berhasil
       navigate("/login");
     } catch (err) {
+      // 4. menampilkan pesan error jika registrasi user gagal
       setError(err?.response?.data?.message || err.message || "Registration failed");
     } finally {
       setLoading(false);

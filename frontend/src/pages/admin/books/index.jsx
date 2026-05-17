@@ -13,9 +13,11 @@ export default function AdminBooks() {
   const [openDropdown, setOpenDropdown] = useState(null);
 
   useEffect(() => {
-    // Fetch books and genres from API and set state
     const fetchData = async () => {
+      // mengelola data buku
+      // 1. mengambil seluruh data buku, kategori, dan penulis dari api
       const [booksData, genresData, authorsData] = await Promise.all([getBooks(), getGenres(), getAuthors()]);
+      // 2. menyimpan data buku, kategori, dan penulis ke state masing-masing
       setBooks(booksData.data);
       setGenres(genresData.data);
       setAuthors(authorsData.data);
@@ -39,11 +41,14 @@ export default function AdminBooks() {
   }
 
   const handleDelete = async (id) => {
+    // 3. meminta konfirmasi sebelum menghapus data buku
     const confirmDelete = window.confirm("Are you sure you want to delete this book?");
 
     if (confirmDelete) {
       try {
+        // 4. mengirim request hapus data buku ke api berdasarkan id
         await deleteBook(id);
+        // 5. memperbarui state buku dengan menyaring buku yang dihapus
         setBooks(books.filter(book => book.id !== id));
       } catch (error) {
         alert(error.message);

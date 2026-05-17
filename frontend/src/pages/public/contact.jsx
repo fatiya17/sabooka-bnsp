@@ -36,14 +36,17 @@ export default function Contact() {
   };
 
   const handleSubmit = (e) => {
+    // user: mencegah reload halaman saat form dikirim oleh user
     e.preventDefault();
     setIsSubmitting(true);
 
+    // 1. memetakan dan menggabungkan jenis layanan/inquiry yang dipilih user
     const selectedServices = Object.entries(formData.services)
       .filter(([_, isSelected]) => isSelected)
       .map(([key, _]) => key.charAt(0).toUpperCase() + key.slice(1))
       .join(", ");
 
+    // 2. menyiapkan data template pesan yang akan dikirim ke admin
     const templateParams = {
       from_name: `${formData.firstName} ${formData.lastName}`,
       from_email: formData.email,
@@ -52,6 +55,7 @@ export default function Contact() {
       services_requested: selectedServices || "Tidak ada layanan spesifik"
     };
 
+    // 3. mengirimkan pesan contact to admin via api emailjs
     emailjs.send(
       import.meta.env.VITE_EMAILJS_SERVICE_ID,
       import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
