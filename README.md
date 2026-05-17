@@ -1,6 +1,12 @@
-<h1 align="left" style="font-family: 'Aeonik', 'Inter', system-ui, -apple-system, sans-serif; font-weight: 500; letter-spacing: -1px; border-bottom: none;">
-  sabooka<span style="color: #FB8B4B;">.</span>
-</h1>
+<p align="left">
+  <a href="https://github.com/fatiya17/sabooka-bnsp">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="./logo-white.svg">
+      <source media="(prefers-color-scheme: light)" srcset="./logo-black.svg">
+      <img alt="sabooka." src="./logo-black.svg" width="220">
+    </picture>
+  </a>
+</p>
 
 **Sabooka BookStore** is a full-stack, decoupled digital bookstore platform designed to manage book catalogs and facilitate seamless online purchasing transactions. 
 
