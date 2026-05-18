@@ -159,9 +159,9 @@ export default function Cart() {
             {/* Summary Sidebar */}
             <div className="lg:col-span-4">
               <div className="bg-black text-white rounded-[24px] md:rounded-[32px] p-6 md:p-8 sticky top-24 md:top-28 shadow-xl">
-                <h2 className="text-lg md:text-xl font-black mb-6 flex items-center gap-2">
+                <h2 className="text-lg md:text-xl text-white mb-6 flex items-center gap-2">
                   <FontAwesomeIcon icon={faShoppingBag} className="text-white text-base" />
-                  Ringkasan
+                  Summary
                 </h2>
                 
                 <div className="space-y-3 mb-6">
