@@ -11,10 +11,10 @@ export default function BookEdit() {
   const [authors, setAuthors] = useState([]);
   const [formData, setFormData] = useState({
     title: "",
-    price: 0,
-    stock: 0,
-    genre_id: 0,
-    author_id: 0,
+    price: "",
+    stock: "",
+    genre_id: "",
+    author_id: "",
     cover_photo: null,
     description: "",
   });
@@ -73,7 +73,16 @@ export default function BookEdit() {
       await updateBook(id, payload);
       navigate('/admin/books');
     } catch (error) {
-        alert('Error to update book', error);
+      let errorMsg = "Error updating book";
+      if (error.response?.data?.message) {
+        if (typeof error.response.data.message === "object") {
+          errorMsg = Object.values(error.response.data.message).flat().join("\n");
+        } else {
+          errorMsg = error.response.data.message;
+        }
+      }
+      console.log("Validation Errors:", error.response?.data);
+      alert(errorMsg);
     }
   }
 
@@ -152,6 +161,7 @@ export default function BookEdit() {
                   onChange={handleChange}
                   name="genre_id"
                   className="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  required
                 >
                   <option value="" disabled>--- Select Genre ---</option>
                   {genres.map((genre) => (
